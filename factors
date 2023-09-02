@@ -12,8 +12,8 @@ def factors(filename):
     for n in numbers:
         for i in range(2, int(math.sqrt(n)) + 1):
             if n % i == 0:
-                p = i
-                q = n // i
+                q = i
+                p = n // i
                 print(f"{n}={p}*{q}")
                 break
 
@@ -22,5 +22,5 @@ if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: factors <file>")
         sys.exit()
-    else:
-        factors(sys.argv[1])
+
+    factors(sys.argv[1])
