@@ -1,23 +1,24 @@
-import sympy
 import sys
+import sympy
 
 
 def factorize(n):
     factors = sympy.factorint(n)
-    return factors.keys()
+    return factors
 
 
 def main(filename):
     try:
-        with open(filename, 'r') as file:
-            n = int(file.read().strip())
-            factors = factorize(n)
-            print(f"{n}={'*'.join(map(str, factors))}")
+        with open(filename) as f:
+            n = int(f.read())
 
+        factors = factorize(n)
+        p, q = factors.keys()
+        print(f"{n}={p}*{q}")
     except FileNotFoundError:
-        print(f"File '{filename}' not found.")
+        print(f"File '{filename}' not found")
     except ValueError:
-        print("Invalid input in the file. Please make sure it contains a valid natural number.")
+        print("Invalid input in file. Make sure it contains a natural number")
 
 
 if __name__ == "__main__":
@@ -25,5 +26,4 @@ if __name__ == "__main__":
         print("Usage: rsa <file>")
         sys.exit()
 
-    filename = sys.argv[1]
-    main(filename)
+    main(sys.argv[1])
