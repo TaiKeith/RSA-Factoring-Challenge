@@ -15,6 +15,7 @@ def main(filename):
         factors = factorize(n)
         p, q = factors.keys()
         print(f"{n}={p}*{q}")
+
     except FileNotFoundError:
         print(f"File '{filename}' not found")
     except ValueError:
