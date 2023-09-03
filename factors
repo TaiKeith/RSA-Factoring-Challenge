@@ -2,10 +2,10 @@
 import sys
 
 
-def factorize(num):
-    for factor in range(2, num):
-        if num % factor == 0:
-            return factor, num // factor
+def factorize(n):
+    for factor in range(2, n):
+        if n % factor == 0:
+            return factor, n // factor
     return None
 
 
@@ -13,13 +13,13 @@ def main(filename):
     try:
         with open(filename, "r") as f:
             for line in f:
-                num = int(line.strip())
-                factors = factorize(num)
+                n = int(line.strip())
+                factors = factorize(n)
                 if factors:
                     p, q = factors
-                    print(f"{num} = {p} * {q}")
+                    print(f"{n}={p}*{q}")
                 else:
-                    print(f"{num} is a prime number")
+                    print(f"{n} is a prime number")
     except FileNotFoundError:
         print(f"The file '{filename}' not found!")
     except ValueError:
@@ -28,7 +28,7 @@ def main(filename):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: ./factors <file>")
+        print("Usage: factors <file>")
         sys.exit()
 
     filename = sys.argv[1]
