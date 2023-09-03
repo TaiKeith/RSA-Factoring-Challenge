@@ -9,8 +9,8 @@ def factorize(n):
 
 def main(filename):
     try:
-        with open(filename) as f:
-            n = int(f.read())
+        with open(filename, "r") as f:
+            n = int(f.read().strip())
 
         factors = factorize(n)
         p, q = factors.keys()
