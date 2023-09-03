@@ -1,0 +1,29 @@
+import sympy
+import sys
+
+
+def factorize(n):
+    factors = sympy.factorint(n)
+    return factors.keys()
+
+
+def main(filename):
+    try:
+        with open(filename, 'r') as file:
+            n = int(file.read().strip())
+            factors = factorize(n)
+            print(f"{n}={'*'.join(map(str, factors))}")
+
+    except FileNotFoundError:
+        print(f"File '{filename}' not found.")
+    except ValueError:
+        print("Invalid input in the file. Please make sure it contains a valid natural number.")
+
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: rsa <file>")
+        sys.exit()
+
+    filename = sys.argv[1]
+    main(filename)
