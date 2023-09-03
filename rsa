@@ -3,18 +3,16 @@ import sympy
 
 
 def factorize(n):
-    factors = sympy.factorint(n)
-    return factors
+    p, q = sympy.factorint(n).keys()
+    return p, q
 
 
 def main(filename):
     try:
         with open(filename, "r") as f:
             n = int(f.read().strip())
-
-        factors = factorize(n)
-        p, q = factors.keys()
-        print(f"{n}={p}*{q}")
+            p, q = factorize(n)
+            print(f"{n}={p}*{q}")
 
     except FileNotFoundError:
         print(f"File '{filename}' not found")
